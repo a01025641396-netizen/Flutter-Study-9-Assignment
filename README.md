@@ -4,10 +4,8 @@
 - 학생 이름과 점수를 관리하고, 사용자가 선택한 학생의 점수를 확인 후 결과를 저장
 
 
-## 2️.기존 구조 문제점
 
-
-### 3-1. 데이터 모델
+### 2-1. 데이터 모델
 ```dart
 // score.dart
 class Score {
@@ -26,13 +24,13 @@ class StudentScore extends Score {
     print("$name, 점수: $score");
   }
 }
-3-2. Repository 인터페이스
+2-2. Repository 인터페이스
 abstract class StudentRepository {
   List<StudentScore> getAllStudents();
   StudentScore? getStudentByName(String name);
   void saveResult(String result);
 }
-3-3. 파일 기반 Repository 구현
+2-3. 파일 기반 Repository 구현
 class FileStudentRepository implements StudentRepository {
   final String filePath;
   List<StudentScore> _students = [];
@@ -58,7 +56,7 @@ class FileStudentRepository implements StudentRepository {
     // result.txt에 저장
   }
 }
-3-4. 사용자 입력 처리
+2-4. 사용자 입력 처리
  StudentScore? checkStudentScore(StudentRepository repo) {
   while (true) {
     print("어떤 학생의 점수를 확인하시겠습니까?");
@@ -74,7 +72,7 @@ class FileStudentRepository implements StudentRepository {
     }
   }
 }
-3-5. main.dart
+2-5. main.dart
  void main() {
   final repo = FileStudentRepository("students.txt");
 
